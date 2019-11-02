@@ -12,7 +12,7 @@ public class SpringExampleApplication {
 
 	@GetMapping("/")
 	public String welcome() {
-		return "++++++++++++++++++++++++++++ Welcome to java Experimental Squard ++++++++++++++++++++++++++++ ";
+		return "++++++++++++++++++++++++++++ Welcome to Experimental Squard ++++++++++++++++++++++++++++ ";
 	}
 
 	@GetMapping("/{input}")
