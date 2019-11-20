@@ -5,13 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
 @RestController
-public class SpringExampleApplication extends SpringBootServletInitializer {
-
+public class SpringExampleApplication {
 	@GetMapping("/")
 	public String welcome() {
 		return "++++++++++++++++++++++++++++ Welcome to Experimental Squard ++++++++++++++++++++++++++++ ";
@@ -26,8 +23,4 @@ public class SpringExampleApplication extends SpringBootServletInitializer {
 		SpringApplication.run(SpringExampleApplication.class, args);
 	}
 	
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
-		return builder.sources(SpringExampleApplication.class);
-	}
 }
