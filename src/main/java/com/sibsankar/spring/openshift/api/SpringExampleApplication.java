@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class SpringExampleApplication {
+public class SpringExampleApplication extends SpringBootServletInitializer {
 
 	@GetMapping("/")
 	public String welcome() {
@@ -22,5 +22,10 @@ public class SpringExampleApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringExampleApplication.class, args);
+	}
+	
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
+		return builder.sources(SpringExampleApplication.class);
 	}
 }
