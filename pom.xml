@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>springbootApp-example</name>
+	<name>springbootapp-example</name>
 	<description>Openshift deployement </description>
 
 	<parent>
