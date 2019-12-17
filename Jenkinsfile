@@ -12,14 +12,14 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            return !openshift.selector("bc", "springbootApp").exists();
+            return !openshift.selector("bc", "springbootapp").exists();
           }
         }
       }
       steps {
         script {
           openshift.withCluster() {
-            openshift.newBuild("--name=springbootApp","--image-stream=openshift/jboss-eap72-openshift:1.1", "--binary=true")
+            openshift.newBuild("--name=springbootapp","--image-stream=openshift/jboss-eap72-openshift:1.1", "--binary=true")
           }
         }
       }
@@ -28,7 +28,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.selector("bc", "springbootApp").startBuild("--from-file=target/springbootApp-example.jar", "--wait")
+            openshift.selector("bc", "springbootapp").startBuild("--from-file=target/springbootapp-example.jar", "--wait")
           }
         }
       }
@@ -37,7 +37,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.tag("springbootApp:latest", "springbootApp:dev")
+            openshift.tag("springbootapp:latest", "springbootapp:dev")
           }
         }
       }
@@ -46,14 +46,14 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            return !openshift.selector('dc', 'springbootApp-dev').exists()
+            return !openshift.selector('dc', 'springbootapp-dev').exists()
           }
         }
       }
       steps {
         script {
           openshift.withCluster() {
-            openshift.newApp("springbootApp:latest", "--name=springbootApp-dev").narrow('svc').expose()
+            openshift.newApp("springbootapp:latest", "--name=springbootapp-dev").narrow('svc').expose()
           }
         }
       }
@@ -62,7 +62,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.tag("springbootApp:dev", "springbootApp:stage")
+            openshift.tag("springbootapp:dev", "springbootapp:stage")
           }
         }
       }
@@ -71,14 +71,14 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            return !openshift.selector('dc', 'springbootApp-stage').exists()
+            return !openshift.selector('dc', 'springbootapp-stage').exists()
           }
         }
       }
       steps {
         script {
           openshift.withCluster() {
-            openshift.newApp("springbootApp:stage", "--name=springbootApp-stage").narrow('svc').expose()
+            openshift.newApp("springbootapp:stage", "--name=springbootapp-stage").narrow('svc').expose()
           }
         }
       }
