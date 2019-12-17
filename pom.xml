@@ -6,9 +6,9 @@
 	<groupId>com.example</groupId>
 	<artifactId>spring-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
-	<name>springbootapp-example</name>
+	<name>spring-example</name>
 	<description>Openshift deployement </description>
 
 	<parent>
