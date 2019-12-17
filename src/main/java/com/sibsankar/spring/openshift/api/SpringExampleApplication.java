@@ -13,12 +13,12 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class SpringExampleApplication extends SpringBootServletInitializer {
 	@GetMapping("/info")
 	public String welcome() {
-		return "++++++++++++++++++++++++++++ Welcome to Experimental Squard ++++++++++++++++++++++++++++ ";
+		return "++++++++++++++++++++++++++++ Welcome to IBM Experimental Squard ++++++++++++++++++++++++++++ ";
 	}
 
 	@GetMapping("/{input}")
 	public String congrats(@PathVariable String input) {
-		return "Hello " + input + ", Your application deployed successfully. Cheers...!!!";
+		return "++++++++++++++++++++++++++++Hello " + input + ", Your application deployed successfully. Cheers...!!!"+ "++++++++++++++++++++++++++++";
 	}
 
 	public static void main(String[] args) {
