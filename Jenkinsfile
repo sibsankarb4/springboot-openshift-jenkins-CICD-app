@@ -19,7 +19,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.newBuild("--name=springbootapp","--image-stream=openshift/jboss-eap72-openshift:1.1", "--binary=true")
+            openshift.newBuild("--name=springbootapp","--image-stream=sibsber1-23934/openjdk18-openshift", "--binary=true")
           }
         }
       }
@@ -28,7 +28,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.selector("bc", "springbootapp").startBuild("--from-file=target/spring-example-0.0.1-SNAPSHOT.war", "--wait")
+            openshift.selector("bc", "springbootapp").startBuild("--from-file=target/spring-example.jar", "--wait")
           }
         }
       }
