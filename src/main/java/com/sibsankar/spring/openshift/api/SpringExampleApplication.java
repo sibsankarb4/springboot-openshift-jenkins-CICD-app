@@ -11,7 +11,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 @RestController
 public class SpringExampleApplication extends SpringBootServletInitializer {
-	@GetMapping("/")
+	@GetMapping("/info")
 	public String welcome() {
 		return "++++++++++++++++++++++++++++ Welcome to Experimental Squard ++++++++++++++++++++++++++++ ";
 	}
