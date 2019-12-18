@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Build App') {
       steps {
-        sh "mvn install"
+        sh "mvn clean package"
       }
     }
     stage('Create Image Builder') {
