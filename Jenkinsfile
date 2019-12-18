@@ -3,13 +3,7 @@ pipeline {
   agent {
       label 'maven'
   }
-  
-   triggers {
-        pollSCM('*/5 * * * *')
-    }
-  
-   options { disableConcurrentBuilds() }
-  
+ 
   stages {
     stage('Build App') {
       steps {
@@ -61,7 +55,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.newApp("springbootapp:uat", "--name=springbootapp-uat").narrow('svc').expose("--port=443")
+            openshift.newApp("springbootapp:latest", "--name=springbootapp-uat").narrow('svc').expose("--port=443")
           }
         }
       }
