@@ -33,52 +33,52 @@ pipeline {
         }
       }
     }
-    stage('Promote to DEV') {
+    stage('Promote to UAT') {
       steps {
         script {
           openshift.withCluster() {
-            openshift.tag("springbootapp:latest", "springbootapp:dev")
+            openshift.tag("springbootapp:latest", "springbootapp:uat")
           }
         }
       }
     }
-    stage('Create DEV') {
+    stage('Create UAT') {
       when {
         expression {
           openshift.withCluster() {
-            return !openshift.selector('dc', 'springbootapp-dev').exists()
+            return !openshift.selector('dc', 'springbootapp-uat').exists()
           }
         }
       }
       steps {
         script {
           openshift.withCluster() {
-            openshift.newApp("springbootapp:dev", "--name=springbootapp-dev").narrow('svc').expose()
+            openshift.newApp("springbootapp:uat", "--name=springbootapp-uat").narrow('svc').expose()
           }
         }
       }
     }
-    stage('Promote STAGE') {
+    stage('Promote PROD') {
       steps {
         script {
           openshift.withCluster() {
-            openshift.tag("springbootapp:dev", "springbootapp:stage")
+            openshift.tag("springbootapp:uat", "springbootapp:prod")
           }
         }
       }
     }
-    stage('Create STAGE') {
+    stage('Create PROD') {
       when {
         expression {
           openshift.withCluster() {
-            return !openshift.selector('dc', 'springbootapp-stage').exists()
+            return !openshift.selector('dc', 'springbootapp-prod').exists()
           }
         }
       }
       steps {
         script {
           openshift.withCluster() {
-            openshift.newApp("springbootapp:stage", "--name=springbootapp-stage").narrow('svc').expose()
+            openshift.newApp("springbootapp:prod", "--name=springbootapp-prod").narrow('svc').expose()
           }
         }
       }
