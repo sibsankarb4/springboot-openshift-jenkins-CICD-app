@@ -30,7 +30,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.selector("bc", "springbootapp").startBuild("--from-file=target/spring-example-0.0.2-SNAPSHOT.jar", "--wait")
+            openshift.selector("bc", "springbootapp").startBuild("--from-file=target/spring-example.jar", "--wait")
           }
         }
       }
@@ -55,7 +55,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.newApp("springbootapp:latest", "--name=springbootapp-uat").narrow('svc').expose("--port=443")
+            openshift.newApp("springbootapp:latest", "--name=springbootapp-uat").narrow('svc').expose()
           }
         }
       }
@@ -80,7 +80,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.newApp("springbootapp:prod", "--name=springbootapp-prod").narrow('svc').expose("--port=443")
+            openshift.newApp("springbootapp:prod", "--name=springbootapp-prod").narrow('svc').expose()
           }
         }
       }
