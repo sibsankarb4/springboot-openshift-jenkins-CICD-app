@@ -30,7 +30,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.selector("bc", "springbootapp").startBuild("--from-file=target/spring-example-0.0.1-SNAPSHOT.jar", "--wait")
+            openshift.selector("bc", "springbootapp").startBuild("--from-file=target/spring-example-0.0.2-SNAPSHOT.jar", "--wait")
           }
         }
       }
