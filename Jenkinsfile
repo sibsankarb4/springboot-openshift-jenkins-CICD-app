@@ -21,7 +21,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.newBuild("--name=springbootapp","--image-stream=sibsber1-23934/openjdk18-openshift", "--binary")
+            openshift.newBuild("--name=springbootapp","--image-stream=sibsber1-23934/openjdk18-openshift:latest", "--binary")
           }
         }
       }
