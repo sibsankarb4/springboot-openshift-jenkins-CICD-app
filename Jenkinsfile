@@ -1,13 +1,11 @@
 pipeline {
-  
   agent {
       label 'maven'
   }
- 
   stages {
     stage('Build App') {
       steps {
-        sh "mvn clean install"
+        sh "mvn install"
       }
     }
     stage('Create Image Builder') {
@@ -21,7 +19,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.newBuild("--name=springbootapp","--image-stream=sibsber1-23934/openjdk18-openshift:latest", "--binary")
+            openshift.newBuild("--name=springbootapp","--image-stream=openjdk18-openshift:1.1", "--binary")
           }
         }
       }
