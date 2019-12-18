@@ -1,7 +1,15 @@
 pipeline {
+  
   agent {
       label 'maven'
   }
+  
+   triggers {
+        pollSCM('*/5 * * * *')
+    }
+  
+   options { disableConcurrentBuilds() }
+  
   stages {
     stage('Build App') {
       steps {
