@@ -53,7 +53,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.newApp("springbootapp:uat", "--name=springbootapp-uat").narrow('svc').expose()
+            openshift.newApp("springbootapp:uat", "--name=springbootapp-uat").narrow('svc').expose("--port=443")
           }
         }
       }
@@ -78,7 +78,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.newApp("springbootapp:prod", "--name=springbootapp-prod").narrow('svc').expose()
+            openshift.newApp("springbootapp:prod", "--name=springbootapp-prod").narrow('svc').expose("--port=443")
           }
         }
       }
