@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>spring-example</name>
-	<description>Openshift deployement</description>
+	<description>Jenkins Openshift deployement</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
