@@ -13,7 +13,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class SpringExampleApplication extends SpringBootServletInitializer {
 	@GetMapping("/info")
 	public String welcome() {
-		return "++++++++++++++++++++++++++++  -: Welcome to Redhat Experimental Squard :- +++++++++++++++++++++++++ new  Code Changed ++++++++ ";
+		return "++++++++++++++++++++++++++++  -: Welcome to Redhat Experimental Squard :- +++++++++++++++++++++++++++++++++ ";
 	}
 
 	@GetMapping("/{input}")
