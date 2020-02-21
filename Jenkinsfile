@@ -3,6 +3,10 @@ pipeline {
       label 'maven'
   }
    
+ triggers {
+       pollSCM('*/5 * * * *')
+    }
+  
  options { disableConcurrentBuilds() }
   
   stages {     
